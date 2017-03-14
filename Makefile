@@ -16,8 +16,6 @@ gdb-%.bin: %.bin Makefile
 	gdb -q -x run.gdb $<
 
 test:
-	mkdir -p ebin/
-	cp binary16.c binary16.h ebin/
 	erl -make
 
 clean:
