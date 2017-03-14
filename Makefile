@@ -16,7 +16,6 @@ gdb-%.bin: %.bin Makefile
 	gdb -q -x run.gdb $<
 
 test:
-	mkdir -p ebin
 	erl -make
 
 clean:
