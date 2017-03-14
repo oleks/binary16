@@ -6,7 +6,4 @@ prop_zero() ->
     ?SETUP(fun () -> eqc_c:start(binary16),
                      fun() -> ok end
            end,
-    ?FORALL({}, {},
-            begin
-                equals(binary16:msb_ndx(0))
-            end)).
+           equals(0, binary16:msb_ndx(0))).
