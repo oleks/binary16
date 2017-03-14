@@ -1,4 +1,3 @@
-#include <string.h> // memcpy
 #include <stdio.h> // printf
 
 #include "binary16.h"
@@ -52,28 +51,38 @@ binary16_from_components(
   return retval;
 }
 
+typedef union {
+  float f;
+  uint32_t i;
+} binary32_t;
+
 binary16_t
 binary16_from_binary32(float x) {
-  uint32_t _x;
-  memcpy(&_x, &x, 4);
+  binary32_t u;
+  u.f = x;
 
-  uint8_t   sign  = _x >> 31;
-  int16_t   exp   = ((int16_t)((_x >> FRC32_BITS) & EXP32_MASK)) - EBIAS32;
-  uint64_t  frac  = _x & FRC32_MASK;
+  uint8_t   sign  = u.i >> 31;
+  int16_t   exp   = ((int16_t)((u.i >> FRC32_BITS) & EXP32_MASK)) - EBIAS32;
+  uint64_t  frac  = u.i & FRC32_MASK;
 
   printf("%d %d %lx\n", sign, exp, frac);
 
   return binary16_from_components(sign, exp, frac);
 }
 
+typedef union {
+  double f;
+  uint64_t i;
+} binary64_t;
+
 binary16_t
 binary16_from_binary64(double x) {
-  uint64_t _x;
-  memcpy(&_x, &x, 8);
+  binary64_t u;
+  u.f = x;
 
-  uint8_t   sign  = _x >> 63;
-  int16_t   exp   = ((int16_t)((_x >> FRC64_BITS) & EXP64_MASK)) - EBIAS64;
-  uint64_t  frac  = _x & FRC64_MASK;
+  uint8_t   sign  = u.i >> 63;
+  int16_t   exp   = ((int16_t)((u.i >> FRC64_BITS) & EXP64_MASK)) - EBIAS64;
+  uint64_t  frac  = u.i & FRC64_MASK;
 
   printf("%d %d %lx\n", sign, exp, frac);
 
