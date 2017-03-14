@@ -12,4 +12,4 @@ prop_msb_ndx() ->
 
 prop_test_examples() ->
            ?FORALL(X, int(),
-            equals(X, X)).
+            equals(X, X+1)).
