@@ -8,4 +8,4 @@ prop_msb_ndx() ->
            end,
            ?FORALL(Width, choose(0, 32),
            ?FORALL(X, choose(1 bsl (Width - 1), (1 bsl Width) - 1),
-           equals(Width, binary16:msb_ndx(<<X:Width>>))))).
+            equals(Width, binary16:msb_ndx(X))))).
