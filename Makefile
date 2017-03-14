@@ -15,6 +15,11 @@ all: main.bin
 gdb-%.bin: %.bin Makefile
 	gdb -q -x run.gdb $<
 
+test:
+	mkdir -p ebin/
+	cp binary16.c ebin/
+	erl -make
+
 clean:
 	rm -f *.o
 	rm -f *.bin

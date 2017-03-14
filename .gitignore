@@ -1,7 +1,9 @@
 ### Binaries ###
 *.bin
+ebin/
 
-# Created by https://www.gitignore.io/api/vim,emacs,c
+
+# Created by https://www.gitignore.io/api/c,emacs,vim,erlang
 
 ### C ###
 # Prerequisites
@@ -103,6 +105,17 @@ flycheck_*.el
 # directory configuration
 .dir-locals.el
 
+### Erlang ###
+.eunit
+deps
+*.beam
+*.plt
+erl_crash.dump
+ebin/*.beam
+rel/example_project
+.concrete/DEV_MODE
+.rebar
+
 ### Vim ###
 # swap
 [._]*.s[a-v][a-z]
@@ -116,4 +129,4 @@ Session.vim
 # auto-generated tag files
 tags
 
-# End of https://www.gitignore.io/api/vim,emacs,c
+# End of https://www.gitignore.io/api/c,emacs,vim,erlang
