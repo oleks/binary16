@@ -17,7 +17,7 @@ gdb-%.bin: %.bin Makefile
 
 test:
 	mkdir -p ebin/
-	cp binary16.c ebin/
+	cp binary16.c binary16.h ebin/
 	erl -make
 
 clean:
