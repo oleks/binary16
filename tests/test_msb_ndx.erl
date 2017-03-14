@@ -9,3 +9,10 @@ prop_msb_ndx() ->
            ?FORALL(Width, choose(0, 32),
            ?FORALL(X, choose(1 bsl (Width - 1), (1 bsl Width) - 1),
             equals(Width, binary16:msb_ndx(X))))).
+
+prop_test_examples() ->
+    ?SETUP(fun () -> eqc_c:start(binary16),
+                     fun() -> ok end
+           end,
+           ?FORALL(X, choose(0, 32),
+            equals(X, X))).
