@@ -32,6 +32,16 @@
 #define POSINF16 ((uint16_t)(0x7c00)) // 0111 1100 0000 0000
 #define NEGINF16 ((uint16_t)(0xfc00)) // 1111 1100 0000 0000
 
+size_t
+msb_ndx(size_t value) {
+  size_t offset = 0;
+  while(value > 0) {
+    offset++;
+    value >>= 1;
+  }
+  return offset;
+}
+
 binary16_t
 binary16_from_components(
     uint8_t sign, int16_t exp, uint64_t frac) {
