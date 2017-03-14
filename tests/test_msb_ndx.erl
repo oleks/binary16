@@ -2,8 +2,10 @@
 -include_lib("eqc/include/eqc.hrl").
 -compile(export_all).
 
-prop_zero() ->
+prop_msb_ndx() ->
     ?SETUP(fun () -> eqc_c:start(binary16),
                      fun() -> ok end
            end,
-           equals(0, binary16:msb_ndx(0))).
+           ?FORALL(Width, choose(0, 32)},
+           ?FORALL(X, choose(1 bsl (Width - 1), (1 bsl Width) - 1),
+           equals(Width, binary16:msb_ndx(<<X:Width>>))))).
