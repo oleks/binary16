@@ -11,5 +11,5 @@ prop_msb_ndx() ->
             equals(Width, binary16:msb_ndx(X))))).
 
 prop_test_examples() ->
-           ?FORALL(X, int(),
-            equals(X, X+1)).
+           ?FORALL({X, Y}, {int(), int()},
+            less_or_equal(X, Y)).
