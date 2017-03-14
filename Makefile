@@ -19,6 +19,7 @@ test:
 	mkdir -p ebin/
 	cp binary16.c binary16.h ebin/
 	erl -make
+	erl -eval "make:all([{parse_transform, eqc_cover}])" -s init stop
 
 clean:
 	rm -f *.o
