@@ -12,4 +12,4 @@ prop_msb_ndx() ->
 
 prop_test_examples() ->
            ?FORALL({X, Y}, {int(), int()},
-            less_or_equal(X, Y)).
+            equals(X, Y)).
